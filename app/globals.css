@@ -42,3 +42,24 @@ body {
   top: 0%;
   /* background-color: rgba(0, 0, 0, 0.25); */
 }
+.top-charts {
+  display: flex;
+  flex: 0 0 100vw;
+  width: 100%;
+}
+.top-charts::-webkit-scrollbar {
+  display: none;
+}
+
+.slider {
+  display: flex;
+  gap: 20px;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+}
+
+.slide {
+  flex: 0 0 100vw;
+  background: yellow;
+  scroll-snap-align: start;
+}
