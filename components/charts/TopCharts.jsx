@@ -7,7 +7,6 @@ const TopCharts = () => {
   const fetcher = (url) => fetch(url).then((res) => res.json());
 
   const { data, error, isLoading } = useSWR('/api/playlist', fetcher);
-  console.log(data);
   if (error) return <div>Error fetching data</div>;
   if (isLoading) return <div>Loading...</div>;
   return (

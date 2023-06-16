@@ -44,7 +44,7 @@ body {
 }
 .top-charts {
   display: flex;
-  flex: 0 0 100vw;
+  /* flex: 0 0 100vw; */
   width: 100%;
 }
 .top-charts::-webkit-scrollbar {
