@@ -1,15 +1,14 @@
-import Tracklist from '@/components/Tracklist';
+import NewTracks from '@/components/Tracklist/NewTracks';
+import PopularTracks from '@/components/Tracklist/PopularTracks';
 import TopCharts from '@/components/charts/TopCharts';
 
 const Home = () => {
   return (
     <div>
       <TopCharts />
-      <Tracklist header={'New releases.'} apiUrl={'/api/tracks/new'} />
-      <Tracklist
-        header={'Popular in your area'}
-        apiUrl={'/api/tracks/popular'}
-      />
+
+      <NewTracks />
+      <PopularTracks />
     </div>
   );
 };

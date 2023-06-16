@@ -1,13 +1,11 @@
 'use client';
 
+import { useGetPlaylistQuery } from '@/redux/slices/apiSlice';
 import { FiHeart } from 'react-icons/fi';
-import useSWR from 'swr';
 
 const TopCharts = () => {
-  const fetcher = (url) => fetch(url).then((res) => res.json());
-
-  const { data, error, isLoading } = useSWR('/api/playlist', fetcher);
-  if (error) return <div>Error fetching data</div>;
+  const { data, isError, isLoading } = useGetPlaylistQuery();
+  if (isError) return <div>Error fetching data</div>;
   if (isLoading) return <div>Loading...</div>;
   return (
     <div className="lg:ml-96">

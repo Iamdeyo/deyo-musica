@@ -1,19 +1,18 @@
 'use client';
-import useSWR from 'swr';
 
-const NewReleases = () => {
-  const fetcher = (url) => fetch(url).then((res) => res.json());
+import { useGetPopularTrackQuery } from '@/redux/slices/apiSlice';
 
-  const { data, error, isLoading } = useSWR('/api/tracks', fetcher);
+const PopularTracks = () => {
+  const { data, isError, isLoading } = useGetPopularTrackQuery();
 
-  if (error) return <div>Error fetching data</div>;
+  if (isError) return <div>Error fetching data</div>;
   if (isLoading) return <div>Loading...</div>;
 
   return (
     <div className="mt-10">
-      <p className="text-2xl font-bold mb-4">New release.</p>
-      <div className="overflow-x-auto overflow-y-hidden snap-x flex w-full gap-8">
-        {data.data.map((tr) => (
+      <p className="text-2xl font-bold mb-4">Popular in your area</p>
+      <div className="top-charts overflow-x-auto overflow-y-hidden snap-x flex w-full gap-8">
+        {data.map((tr) => (
           <div
             className="flex flex-col flex-none gap-1 snap-start w-[153px]"
             key={tr.id}
@@ -32,4 +31,4 @@ const NewReleases = () => {
     </div>
   );
 };
-export default NewReleases;
+export default PopularTracks;

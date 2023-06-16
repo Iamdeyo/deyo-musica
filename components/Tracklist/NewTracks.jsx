@@ -1,17 +1,16 @@
 'use client';
-import useSWR from 'swr';
 
-const Tracklist = ({ apiUrl, header }) => {
-  const fetcher = (url) => fetch(url).then((res) => res.json());
+import { useGetNewTrackQuery } from '@/redux/slices/apiSlice';
 
-  const { data, error, isLoading } = useSWR(apiUrl, fetcher);
+const NewTracks = () => {
+  const { data, isError, isLoading } = useGetNewTrackQuery();
 
-  if (error) return <div>Error fetching data</div>;
+  if (isError) return <div>Error fetching data</div>;
   if (isLoading) return <div>Loading...</div>;
 
   return (
     <div className="mt-10">
-      <p className="text-2xl font-bold mb-4">{header}</p>
+      <p className="text-2xl font-bold mb-4">New releases.</p>
       <div className="top-charts overflow-x-auto overflow-y-hidden snap-x flex w-full gap-8">
         {data.map((tr) => (
           <div
@@ -32,4 +31,4 @@ const Tracklist = ({ apiUrl, header }) => {
     </div>
   );
 };
-export default Tracklist;
+export default NewTracks;
