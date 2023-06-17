@@ -8,9 +8,9 @@ const TopCharts = () => {
   if (isError) return <div>Error fetching data</div>;
   if (isLoading) return <div>Loading...</div>;
   return (
-    <div className="lg:ml-96">
-      <p>Top Charts</p>
-      <div className="top-charts overflow-x-auto overflow-y-hidden snap-x lg:overflow-y-auto lg:overflow-x-hidden lg:h-[570px] lg:flex-col">
+    <div className="">
+      <p className="font-bold text-xl mb-4">Top Charts</p>
+      <div className="top-charts overflow-x-auto overflow-y-hidden snap-x lg:overflow-y-auto lg:overflow-x-hidden lg:h-[370px] lg:flex-col">
         {data &&
           data.data.map((pl) => (
             <div
