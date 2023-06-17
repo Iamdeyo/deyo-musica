@@ -7,8 +7,8 @@ import LogoutIcon from '@/public/assets/Logout.svg';
 
 const SideNav = () => {
   return (
-    <div className="hidden lg:block absolute left-5 top-24">
-      <div className="bg-darkAlt px-4 py-6 rounded-[32px] flex flex-col gap-4">
+    <div className="hidden lg:block absolute left-5 top-28">
+      <div className="bg-darkAlt px-4 py-7 rounded-[32px] flex flex-col gap-8">
         <div className=" text-icons opacity-25 hover:text-iconsHover hover:opacity-100 cursor-pointer">
           <HomeIcon />
         </div>
@@ -22,7 +22,7 @@ const SideNav = () => {
           <VideosIcon />
         </div>
       </div>
-      <div className="bg-darkAlt px-4 py-6 rounded-[32px] flex flex-col gap-4 mt-5">
+      <div className="bg-darkAlt px-4 py-7 rounded-[32px] flex flex-col gap-8 mt-5">
         <div className=" text-icons opacity-25 hover:text-iconsHover hover:opacity-100 cursor-pointer">
           <ProfileIcon />
         </div>

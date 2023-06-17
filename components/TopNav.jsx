@@ -14,7 +14,7 @@ const TopNav = () => {
     setMenu((prev) => (prev = !prev));
   };
   return (
-    <div className="p-4">
+    <div className="px-4 py-6 lg:px-6 lg:mb-6">
       <div className="flex items-center gap-4">
         <div className="lg:hidden cursor-pointer" onClick={toggleMenu}>
           <FiMenu size={30} />
@@ -30,7 +30,7 @@ const TopNav = () => {
       </div>
       {/* side nav mobile */}
       {menu && (
-        <div className={`lg:hidden mob-side-nav`} onClick={toggleMenu}>
+        <div className={`lg:hidden z-50 mob-side-nav`} onClick={toggleMenu}>
           <MobSideNav toggleMenu={toggleMenu} />
         </div>
       )}

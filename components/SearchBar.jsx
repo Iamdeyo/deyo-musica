@@ -17,7 +17,7 @@ const SearchBar = () => {
   return (
     <form
       onSubmit={handleSearch}
-      className={`flex font-semibold items-end ml-auto lg:ml-16  ${
+      className={`flex font-semibold items-end ml-auto lg:ml-6  ${
         searchBar ? '' : ''
       }`}
     >

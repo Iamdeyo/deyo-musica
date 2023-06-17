@@ -12,6 +12,9 @@ module.exports = {
         iconsHover: '#FACD66',
         darkAlt: '#1A1E1F',
       },
+      fontFamily: {
+        quicksand: ['var(--font-quicksand)'],
+      },
     },
   },
   plugins: [],

@@ -2,9 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-
-  @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -32,7 +30,7 @@
 body {
   background: #1d2123;
   color: white;
-  font-family: 'Quicksand', sans-serif;
+  /* font-family: sans-serif; */
 }
 .input-nobg {
   appearance: none;
@@ -67,4 +65,83 @@ body {
   flex: 0 0 100vw;
   background: yellow;
   scroll-snap-align: start;
+}
+
+.truncateD {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.player {
+  background: rgba(29, 33, 35, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  /* Note: backdrop-filter has minimal browser support */
+  box-sizing: border-box;
+  height: 125px;
+  width: 100vw;
+}
+.rhap_container {
+  background: transparent;
+  width: 60%;
+  height: 0;
+  padding: 0%;
+}
+.rhap_container .rhap_main {
+  flex-direction: column-reverse;
+  gap: 28px;
+}
+.rhap_container .rhap_main .rhap_controls-section {
+  justify-content: center;
+}
+.rhap_container .rhap_main .rhap_controls-section .rhap_additional-controls {
+  flex: none;
+  display: none;
+}
+.rhap_container .rhap_main .rhap_controls-section .rhap_volume-controls {
+  flex: none;
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  width: 15%;
+  transform: translateY(-50%);
+}
+
+.rhap_container .rhap_progress-container {
+  height: 12px;
+}
+.rhap_container .rhap_progress-container .rhap_progress-indicator {
+  height: 12px;
+  width: 12px;
+  top: -3px;
+  background: #facd66;
+}
+.rhap_container .rhap_progress-container .rhap_progress-filled {
+  height: 4px;
+  background: #facd66;
+}
+.rhap_container .rhap_progress-bar,
+.rhap_container .rhap_download-progress {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 50px;
+  height: 4px;
+}
+.rhap_container .rhap_main-controls {
+  gap: 45px;
+  margin: 0 45px;
+}
+.rhap_container .rhap_main-controls button {
+  color: #facd66;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.rhap_container .rhap_main-controls button:nth-child(2) {
+  color: #fff;
+  border-radius: 100%;
+  background: #facd66;
+  box-shadow: 0px 0px 18px rgba(255, 255, 255, 0.3);
 }

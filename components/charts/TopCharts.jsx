@@ -10,7 +10,7 @@ const TopCharts = () => {
   return (
     <div className="">
       <p className="font-bold text-xl mb-4">Top Charts</p>
-      <div className="top-charts overflow-x-auto overflow-y-hidden snap-x lg:overflow-y-auto lg:overflow-x-hidden lg:h-[370px] lg:flex-col">
+      <div className="top-charts overflow-x-auto overflow-y-hidden snap-x lg:overflow-y-auto lg:overflow-x-hidden lg:h-[329px] lg:flex-col">
         {data &&
           data.data.map((pl) => (
             <div

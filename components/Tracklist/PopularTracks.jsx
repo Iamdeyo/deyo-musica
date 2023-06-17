@@ -1,9 +1,16 @@
 'use client';
 
 import { useGetPopularTrackQuery } from '@/redux/slices/apiSlice';
+import { setTrack } from '@/redux/slices/trackSlice';
+import { useDispatch } from 'react-redux';
 
 const PopularTracks = () => {
   const { data, isError, isLoading } = useGetPopularTrackQuery();
+  const dispacth = useDispatch();
+
+  const selectTrack = (track) => {
+    dispacth(setTrack([track]));
+  };
 
   if (isError) return <div>Error fetching data</div>;
   if (isLoading) return <div>Loading...</div>;
@@ -16,6 +23,7 @@ const PopularTracks = () => {
           <div
             className="flex flex-col flex-none gap-1 snap-start w-[153px]"
             key={tr.id}
+            onClick={() => selectTrack(tr)}
           >
             <img
               src={tr.album.cover_medium}

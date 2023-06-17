@@ -12,7 +12,7 @@ const CurrentChart = () => {
   return (
     <div className="rounded-[20px] w-full h-[503px] px-8 pt-8 pb-11 bg-[#609EAF] flex flex-col lg:h-[373px]">
       <p className="text-xs ">Current playlist</p>
-      <p className="font-bold text-4xl mt-auto">R & B Hits</p>
+      <p className="font-bold text-4xl mt-auto">Tomorrow’s tunes</p>
       <p className="text-sm font-normal lg:mb-auto lg:w-1/2">
         All mine, Lie again, Petty call me everyday, Out of time, No love, Bad
         habit, and so much more
