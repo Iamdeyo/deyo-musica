@@ -9,6 +9,9 @@ export const apiSlice = createApi({
     getPlaylist: builder.query({
       query: () => `/playlist/`,
     }),
+    getPlaylistTracks: builder.query({
+      query: (id) => `/playlist/allTracks/${id}`,
+    }),
     getPopularTrack: builder.query({
       query: () => `/tracks/popular`,
     }),
@@ -24,4 +27,5 @@ export const {
   useGetPlaylistQuery,
   useGetNewTrackQuery,
   useGetPopularTrackQuery,
+  useGetPlaylistTracksQuery,
 } = apiSlice;

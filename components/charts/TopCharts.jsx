@@ -2,20 +2,28 @@
 
 import { useGetPlaylistQuery } from '@/redux/slices/apiSlice';
 import { FiHeart } from 'react-icons/fi';
+import { useRouter } from 'next/navigation';
 
 const TopCharts = () => {
+  const router = useRouter();
   const { data, isError, isLoading } = useGetPlaylistQuery();
   if (isError) return <div>Error fetching data</div>;
   if (isLoading) return <div>Loading...</div>;
+
+  const handlePlaylistRoute = (pl) => {
+    router.push(`/playlist/${pl.id}`);
+  };
+
   return (
     <div className="">
       <p className="font-bold text-xl mb-4">Top Charts</p>
       <div className="top-charts overflow-x-auto overflow-y-hidden snap-x lg:overflow-y-auto lg:overflow-x-hidden lg:h-[329px] lg:flex-col">
         {data &&
-          data.data.map((pl) => (
+          data.map((pl) => (
             <div
               className="bg-darkAlt flex-none snap-start px-4 pb-6 pt-4 rounded-[20px] w-screen max-w-xs min-w-[200px] relative flex flex-row gap-4 mr-4 lg:flex-row lg:pb-4 lg:max-w-[418px] h-fit lg:mr-0 lg:mb-4"
               key={pl.id}
+              onClick={() => handlePlaylistRoute(pl)}
             >
               <img
                 src={pl.picture_medium}
