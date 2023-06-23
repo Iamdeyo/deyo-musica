@@ -6,10 +6,29 @@ import { useDispatch } from 'react-redux';
 import { setTrack } from '@/redux/slices/trackSlice';
 import MusicPlusIcon from '@/public/assets/music-square-add.svg';
 import PlayIcon from '@/public/assets/playall.svg';
+import { setLikes, setMyCollection } from '@/redux/slices/collectionSlice';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 const Playlist = ({ params }) => {
   const dispacth = useDispatch();
   const { data, isLoading, isError } = useGetPlaylistTracksQuery(params.id);
+  // const [myCollections, setMyCollections] = useState(null)
+  const [liked, setLiked] = useState(false);
+
+  // const myCollectionsData = useSelector((state) => state.collection.myCollections);
+
+  // useEffect(()=>{
+
+  // },[])
+
+  const addToCollection = () => {
+    dispacth(setMyCollection(data));
+  };
+
+  const addLikeTracks = (track) => {
+    dispacth(setLikes(track));
+  };
 
   const selectTrack = (track) => {
     dispacth(setTrack([track]));
@@ -46,7 +65,10 @@ const Playlist = ({ params }) => {
               <PlayIcon />
               <span>Play all</span>
             </span>
-            <span className="flex gap-3 p-3 rounded-[32px] items-center bg-[#ffffff12] cursor-pointer">
+            <span
+              className="flex gap-3 p-3 rounded-[32px] items-center bg-[#ffffff12] cursor-pointer"
+              onClick={addToCollection}
+            >
               <MusicPlusIcon />
               <span>Add to collection</span>
             </span>
@@ -70,7 +92,13 @@ const Playlist = ({ params }) => {
                 alt="track_img"
                 className="w-[39px] h-[39px] col-start-1 rounded-md row-span-2"
               />
-              <span className="hidden md:block">
+              <span
+                onClick={(e) => {
+                  e.stopPropagation();
+                  addLikeTracks(tr);
+                }}
+                className="hidden md:block"
+              >
                 <FiHeart />
               </span>
             </div>

@@ -122,7 +122,8 @@ body {
   background: #facd66;
 }
 .rhap_container .rhap_progress-bar,
-.rhap_container .rhap_download-progress {
+.rhap_container .rhap_download-progress,
+.rhap_volume-bar-area .rhap_volume-bar {
   background: rgba(255, 255, 255, 0.04);
   border-radius: 50px;
   height: 4px;
@@ -145,7 +146,6 @@ body {
   background: #facd66;
   box-shadow: 0px 0px 18px rgba(255, 255, 255, 0.3);
 }
-
 .playlist-tracks {
   background: rgba(51, 55, 59, 0.37);
   backdrop-filter: blur(5px);
@@ -153,6 +153,55 @@ body {
   border-radius: 10px;
 }
 
+.rhap_container .rhap_volume-bar-area .rhap_volume-filled {
+  background-color: #facd66;
+  border-radius: 50px;
+  height: 4px;
+}
+.rhap_container .rhap_volume-bar-area .rhap_volume-indicator,
+.rhap_time {
+  display: none;
+}
+
+.collections {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border-radius: 20px;
+}
+.collections > *:first-child {
+  background: linear-gradient(
+    179.89deg,
+    rgba(0, 0, 0, 0) 0.01%,
+    rgba(15, 18, 19, 0.85) 50.67%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-radius: 20px;
+}
+
+@media screen and (max-width: 640px) {
+  .rhap_volume-controls,
+  .rhap_progress-section {
+    display: none;
+  }
+  .rhap_container .rhap_main-controls button:first-child {
+    display: none;
+  }
+  .rhap_container .rhap_main-controls button:last-child,
+  .rhap_container .rhap_main-controls button:nth-child(2) {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+  .rhap_container .rhap_main-controls {
+    gap: 20px;
+
+    position: absolute;
+    right: -28px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
 @media screen and (max-width: 410px) {
   .playlist-btn {
     flex-direction: column;

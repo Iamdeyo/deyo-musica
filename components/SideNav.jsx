@@ -4,17 +4,24 @@ import RadioIcon from '@/public/assets/radio.svg';
 import ProfileIcon from '@/public/assets/profile.svg';
 import VideosIcon from '@/public/assets/videos.svg';
 import LogoutIcon from '@/public/assets/Logout.svg';
+import Link from 'next/link';
 
 const SideNav = () => {
   return (
     <div className="hidden lg:block absolute left-5 top-28">
       <div className="bg-darkAlt px-4 py-7 rounded-[32px] flex flex-col gap-8">
-        <div className=" text-icons opacity-25 hover:text-iconsHover hover:opacity-100 cursor-pointer">
+        <Link
+          href={'/'}
+          className=" text-icons opacity-25 hover:text-iconsHover hover:opacity-100 cursor-pointer"
+        >
           <HomeIcon />
-        </div>
-        <div className=" text-icons opacity-25 hover:text-iconsHover hover:opacity-100 cursor-pointer">
+        </Link>
+        <Link
+          href={'/collections'}
+          className=" text-icons opacity-25 hover:text-iconsHover hover:opacity-100 cursor-pointer"
+        >
           <PlaylistIcon />
-        </div>
+        </Link>
         <div className=" text-icons opacity-25 hover:text-iconsHover hover:opacity-100 cursor-pointer">
           <RadioIcon />
         </div>

@@ -18,11 +18,11 @@ const Player = () => {
 
   useEffect(() => {
     setTracks(getTracks.track);
+    setCurrentTrackIndex(0);
   }, [getTracks]);
 
   const track = tracks[currentTrackIndex];
-  console.log(track);
-  // const currentSong = ;
+
   const handleNextSong = () => {
     // Increment the current song index
     setCurrentTrackIndex((prevIndex) => (prevIndex + 1) % tracks.length);
@@ -36,8 +36,8 @@ const Player = () => {
   };
 
   const customIcons = {
-    play: <FiPlay size={12} fill="#fff" />,
-    pause: <FiPause size={12} fill="#fff" />,
+    play: <FiPlay fill="#fff" className="sm:text-[12px]" />,
+    pause: <FiPause fill="#fff" className="sm:text-[12px]" />,
     previous: <PrevIcon />,
     next: <NextIcon />,
     volume: <VolIcon />,
@@ -46,7 +46,7 @@ const Player = () => {
   return (
     <div className="fixed left-0 bottom-0 z-20 player">
       <div className="h-full flex px-4 py-6">
-        <div className="flex items-center h-full w-[20%] gap-3 ">
+        <div className="flex items-center h-full sm:w-[20%] gap-3 ">
           {track && (
             <img
               src={track?.album.cover_medium}
@@ -66,7 +66,11 @@ const Player = () => {
           src={track?.preview}
           showSkipControls={true}
           showJumpControls={false}
+          showFilledVolume={true}
           customIcons={customIcons}
+          onClickNext={handleNextSong}
+          onClickPrevious={handlePrevSong}
+          onEnded={handleNextSong}
         />
       </div>
     </div>

@@ -5,6 +5,7 @@ import ProfileIcon from '@/public/assets/profile.svg';
 import VideosIcon from '@/public/assets/videos.svg';
 import LogoutIcon from '@/public/assets/Logout.svg';
 import { FiX } from 'react-icons/fi';
+import Link from 'next/link';
 
 const MobSideNav = ({ toggleMenu }) => {
   return (
@@ -19,14 +20,20 @@ const MobSideNav = ({ toggleMenu }) => {
         className="bg-darkAlt w-full max-w-xs pl-8 pt-20 h-full flex flex-col gap-4 "
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex h-10 group items-center gap-4 text-icons opacity-25 hover:opacity-100 cursor-pointer">
+        <Link
+          href={'/'}
+          className="flex h-10 group items-center gap-4 text-icons opacity-25 hover:opacity-100 cursor-pointer"
+        >
           <HomeIcon className="group-hover:text-iconsHover" />
           <p className="font-bold group-hover:text-white">Home</p>
-        </div>
-        <div className="flex h-10 group items-center gap-4 text-icons opacity-25 hover:opacity-100 cursor-pointer">
+        </Link>
+        <Link
+          href={'/collections'}
+          className="flex h-10 group items-center gap-4 text-icons opacity-25 hover:opacity-100 cursor-pointer"
+        >
           <PlaylistIcon className="group-hover:text-iconsHover" />
           <p className="font-bold group-hover:text-white">My collections</p>
-        </div>
+        </Link>
         <div className="flex h-10 group items-center gap-4 text-icons opacity-25 hover:opacity-100 cursor-pointer">
           <RadioIcon className="group-hover:text-iconsHover" />
           <p className="font-bold group-hover:text-white">Radio</p>
