@@ -179,6 +179,45 @@ body {
   border-radius: 20px;
 }
 
+@keyframes equalizer {
+  0% {
+    height: 0;
+  }
+  50% {
+    height: 12px;
+  }
+  100% {
+    height: 0;
+  }
+}
+
+.equalizer-svg {
+  background: linear-gradient(
+    10.89deg,
+    rgba(0, 0, 0, 0) 0.01%,
+    rgba(15, 18, 19, 0.85) 50.67%
+  );
+}
+.equalizer-svg rect {
+  color: #facd66;
+  fill: #facd66;
+}
+.equalizer-svg .rect-1 {
+  animation: equalizer 1.5s infinite;
+}
+.equalizer-svg .rect-2 {
+  animation: equalizer 1.5s infinite;
+  animation-delay: 1.5s;
+}
+.equalizer-svg .rect-3 {
+  animation: equalizer 1.5s infinite;
+  animation-delay: 1s;
+}
+.equalizer-svg .rect-4 {
+  animation: equalizer 1.5s infinite;
+  animation-delay: 0.5s;
+}
+
 @media screen and (max-width: 640px) {
   .rhap_volume-controls,
   .rhap_progress-section {

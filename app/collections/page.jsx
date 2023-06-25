@@ -1,7 +1,6 @@
 'use client';
 import Likes from '@/components/collections/Likes';
 import MyCollections from '@/components/collections/MyCollections';
-import Playlist from '@/components/collections/Playlist';
 import { useState } from 'react';
 
 function Collections() {

@@ -1,3 +1,4 @@
+'use client';
 import HomeIcon from '@/public/assets/home.svg';
 import PlaylistIcon from '@/public/assets/playlist.svg';
 import RadioIcon from '@/public/assets/radio.svg';
@@ -6,8 +7,10 @@ import VideosIcon from '@/public/assets/videos.svg';
 import LogoutIcon from '@/public/assets/Logout.svg';
 import { FiX } from 'react-icons/fi';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const MobSideNav = ({ toggleMenu }) => {
+  const pathname = usePathname();
   return (
     <>
       <span
@@ -22,14 +25,22 @@ const MobSideNav = ({ toggleMenu }) => {
       >
         <Link
           href={'/'}
-          className="flex h-10 group items-center gap-4 text-icons opacity-25 hover:opacity-100 cursor-pointer"
+          className={`flex h-10 group items-center gap-4 text-icons opacity-25 hover:opacity-100 cursor-pointer ${
+            pathname === '/' ? 'opacity-100 text-iconsHover' : 'text-icons'
+          }`}
+          onClick={toggleMenu}
         >
           <HomeIcon className="group-hover:text-iconsHover" />
           <p className="font-bold group-hover:text-white">Home</p>
         </Link>
         <Link
           href={'/collections'}
-          className="flex h-10 group items-center gap-4 text-icons opacity-25 hover:opacity-100 cursor-pointer"
+          className={`flex h-10 group items-center gap-4 text-icons opacity-25 hover:opacity-100 cursor-pointer ${
+            pathname.includes('collections')
+              ? 'opacity-100 text-iconsHover'
+              : 'text-icons'
+          }`}
+          onClick={toggleMenu}
         >
           <PlaylistIcon className="group-hover:text-iconsHover" />
           <p className="font-bold group-hover:text-white">My collections</p>

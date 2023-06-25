@@ -6,26 +6,46 @@ import { FiPause, FiPlay } from 'react-icons/fi';
 import PrevIcon from '@/public/assets/previous.svg';
 import NextIcon from '@/public/assets/next.svg';
 import VolIcon from '@/public/assets/volume-high.svg';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { removeCurrentTrack, setCurrentTrack } from '@/redux/slices/trackSlice';
 
 const Player = () => {
-  const getTracks = useSelector((state) => state.track);
+  const dispacth = useDispatch();
+  const getTracks = useSelector((state) => state.track.track);
 
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
   const [tracks, setTracks] = useState([]);
+  const [track, setTrack] = useState(null);
 
   useEffect(() => {
-    setTracks(getTracks.track);
+    setTracks(getTracks);
     setCurrentTrackIndex(0);
   }, [getTracks]);
 
-  const track = tracks[currentTrackIndex];
+  useEffect(() => {
+    setTrack(tracks[currentTrackIndex]);
+  }, [currentTrackIndex, tracks]);
+
+  const currentTrack = () => {
+    dispacth(setCurrentTrack(track));
+  };
 
   const handleNextSong = () => {
     // Increment the current song index
     setCurrentTrackIndex((prevIndex) => (prevIndex + 1) % tracks.length);
+  };
+
+  const handleEndSong = () => {
+    if (currentTrackIndex + 1 === tracks.length) {
+      dispacth(removeCurrentTrack());
+    }
+    handleNextSong();
+  };
+
+  const handlePlauseSong = () => {
+    dispacth(removeCurrentTrack());
   };
 
   const handlePrevSong = () => {
@@ -70,7 +90,9 @@ const Player = () => {
           customIcons={customIcons}
           onClickNext={handleNextSong}
           onClickPrevious={handlePrevSong}
-          onEnded={handleNextSong}
+          onEnded={handleEndSong}
+          onPlay={currentTrack}
+          onPause={handlePlauseSong}
         />
       </div>
     </div>
