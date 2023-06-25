@@ -40,10 +40,15 @@ const TopCharts = () => {
                 <p className="text-xs opacity-50 w-2/3 lg:w-full truncate">
                   {pl.user.name}
                 </p>
-                <p className="text-sm mt-6 lg:mt-0">{'22:20'}</p>
-                <span className="flex w-9 h-9 items-center justify-center rounded-full border border-[#ffffff27] absolute top-4 right-4 lg:top-1/2 lg:transform lg:-translate-y-1/2">
-                  <FiHeart className="text-iconsHover" />
-                </span>
+                <p className="text-sm mt-6 lg:mt-0">{pl.duration}</p>
+
+                <label
+                  className="flex w-9 h-9 items-center justify-center rounded-full border border-[#ffffff27] absolute top-4 right-4 lg:top-1/2 lg:transform lg:-translate-y-1/2"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <input type="checkbox" className="hidden peer" />
+                  <FiHeart className="text-iconsHover peer-checked:fill-iconsHover" />
+                </label>
               </div>
             </div>
           ))}

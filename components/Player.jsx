@@ -3,9 +3,9 @@
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 import { FiPause, FiPlay } from 'react-icons/fi';
+import { BiShuffle } from 'react-icons/bi';
 import PrevIcon from '@/public/assets/previous.svg';
 import NextIcon from '@/public/assets/next.svg';
-import VolIcon from '@/public/assets/volume-high.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { useState } from 'react';
@@ -18,6 +18,7 @@ const Player = () => {
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
   const [tracks, setTracks] = useState([]);
   const [track, setTrack] = useState(null);
+  const [shuffle, setShuffle] = useState(false);
 
   useEffect(() => {
     setTracks(getTracks);
@@ -33,8 +34,21 @@ const Player = () => {
   };
 
   const handleNextSong = () => {
-    // Increment the current song index
-    setCurrentTrackIndex((prevIndex) => (prevIndex + 1) % tracks.length);
+    if (shuffle) {
+      let shuffledSongIndex;
+      do {
+        shuffledSongIndex = Math.floor(Math.random() * tracks.length);
+      } while (shuffledSongIndex === currentTrackIndex);
+
+      setCurrentTrackIndex(shuffledSongIndex);
+    } else {
+      // Increment the current song index
+      setCurrentTrackIndex((prevIndex) => (prevIndex + 1) % tracks.length);
+    }
+  };
+
+  const handleShuffle = () => {
+    setShuffle((prev) => (prev = !prev));
   };
 
   const handleEndSong = () => {
@@ -60,12 +74,11 @@ const Player = () => {
     pause: <FiPause fill="#fff" className="sm:text-[12px]" />,
     previous: <PrevIcon />,
     next: <NextIcon />,
-    volume: <VolIcon />,
   };
 
   return (
     <div className="fixed left-0 bottom-0 z-20 player">
-      <div className="h-full flex px-4 py-6">
+      <div className="h-full flex px-4 py-6 relative">
         <div className="flex items-center h-full sm:w-[20%] gap-3 ">
           {track && (
             <img
@@ -81,6 +94,10 @@ const Player = () => {
             </p>
           </div>
         </div>
+
+        <button className="shuffle-btn" onClick={handleShuffle}>
+          <BiShuffle className={shuffle && 'text-iconsHover'} />
+        </button>
 
         <AudioPlayer
           src={track?.preview}

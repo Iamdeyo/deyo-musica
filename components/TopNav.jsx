@@ -14,7 +14,7 @@ const TopNav = () => {
     setMenu((prev) => (prev = !prev));
   };
   return (
-    <div className="px-4 py-6 lg:px-6 lg:mb-6">
+    <div className="px-4 py-6 z-40 lg:px-6 bg-[#1d2123] fixed w-full top-0 left-0">
       <div className="flex items-center gap-4">
         <div className="lg:hidden cursor-pointer" onClick={toggleMenu}>
           <FiMenu size={30} />

@@ -25,8 +25,10 @@ const MobSideNav = ({ toggleMenu }) => {
       >
         <Link
           href={'/'}
-          className={`flex h-10 group items-center gap-4 text-icons opacity-25 hover:opacity-100 cursor-pointer ${
-            pathname === '/' ? 'opacity-100 text-iconsHover' : 'text-icons'
+          className={`flex h-10 group items-center gap-4 text-icons  hover:opacity-100 cursor-pointer ${
+            pathname === '/'
+              ? 'opacity-100 text-iconsHover'
+              : 'text-icons opacity-25'
           }`}
           onClick={toggleMenu}
         >
@@ -35,10 +37,10 @@ const MobSideNav = ({ toggleMenu }) => {
         </Link>
         <Link
           href={'/collections'}
-          className={`flex h-10 group items-center gap-4 text-icons opacity-25 hover:opacity-100 cursor-pointer ${
+          className={`flex h-10 group items-center gap-4 text-icons  hover:opacity-100 cursor-pointer ${
             pathname.includes('collections')
               ? 'opacity-100 text-iconsHover'
-              : 'text-icons'
+              : 'text-icons opacity-25'
           }`}
           onClick={toggleMenu}
         >

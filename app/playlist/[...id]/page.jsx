@@ -11,30 +11,29 @@ import {
   removeFromMyCollection,
   setLikes,
   setMyCollection,
+  setPlaylist,
 } from '@/redux/slices/collectionSlice';
-import { useState } from 'react';
-import { useEffect } from 'react';
+
 import LoadingPage from '@/app/loading';
 
 const Playlist = ({ params }) => {
   const dispacth = useDispatch();
   const { data, isLoading, isError } = useGetPlaylistTracksQuery(params.id);
-  // const [myCollections, setMyCollections] = useState(null)
-  // const [liked, setLiked] = useState(false);
 
   const { likes, myCollections } = useSelector((state) => state.collection);
-  // const myCollectionsData = useSelector((state) => state.collection.myCollections);
-
-  // useEffect(()=>{
-
-  // },[])
 
   const { currentTrack } = useSelector((state) => state.track);
+
+  const convertSecondsToMinutes = (seconds) => {
+    const minutes = Math.floor(seconds / 60); // Calculate the whole minutes
+    const remainingSeconds = seconds % 60; // Calculate the remaining seconds
+
+    return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`; // Format the minutes and seconds
+  };
 
   const handleMyCollections = () => {
     if (myCollections.some((pl) => pl.playlist.id === data.playlist.id)) {
       dispacth(removeFromMyCollection(data.playlist.id));
-      // alert('Playlist');
     } else {
       dispacth(setMyCollection(data));
     }
@@ -53,6 +52,7 @@ const Playlist = ({ params }) => {
   };
   const selectAllTracks = () => {
     dispacth(setTrack(data.tracks));
+    dispacth(setPlaylist(data.playlist));
   };
   if (isError) return <div>Error fetching data</div>;
   if (isLoading) return <LoadingPage />;
@@ -96,17 +96,21 @@ const Playlist = ({ params }) => {
                 collections
               </span>
             </span>
-            <span className="flex gap-3 p-3 rounded-[32px] items-center bg-[#ffffff12] cursor-pointer duration-200 ease-in-out hover:text-iconsHover">
-              <FiHeart size={16} className="text-black" />
+            <label className="flex gap-3 p-3 rounded-[32px] items-center bg-[#ffffff12] cursor-pointer duration-200 ease-in-out hover:text-iconsHover">
+              <input type="checkbox" className="hidden peer" />
+              <FiHeart
+                size={16}
+                className="text-iconsHover peer-checked:fill-iconsHover"
+              />
               <span>Like</span>
-            </span>
+            </label>
           </div>
         </div>
       </div>
       <div className="snap-y overflow-y-auto overflow-x-hidden flex gap-[14px] w-full flex-col">
         {data?.tracks.map((tr) => (
           <div
-            className="h-[56px] playlist-tracks flex items-center px-2 cursor-pointer md:justify-between duration-500 ease-in-out hover:bg-iconsHover hover:font-bold hover:text-black"
+            className="h-[56px] playlist-tracks flex items-center px-2 cursor-pointer md:justify-between duration-500 ease-in-out hover:bg-iconsHover hover:font-bold hover:text-black group"
             key={tr.id}
             onClick={() => selectTrack(tr)}
           >
@@ -183,8 +187,10 @@ const Playlist = ({ params }) => {
               <p className="text-[10px] ">{tr.artist.name}</p>
             </div>
             <div className="flex flex-col gap-2 ml-auto md:justify-between md:w-2/12 md:flex-row">
-              <FiMoreVertical className=" justify-self-end lg:order-last text-iconsHover" />
-              <p className="text-xs justify-self-end">{tr.duration}</p>
+              <FiMoreVertical className=" justify-self-end lg:order-last text-iconsHover group-hover:text-black" />
+              <p className="text-xs justify-self-end">
+                {convertSecondsToMinutes(tr.duration)}
+              </p>
             </div>
           </div>
         ))}

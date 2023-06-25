@@ -26,7 +26,7 @@ export default function RootLayout({ children }) {
           <div className="relative pb-32 2xl:container mx-auto font-quicksand">
             <TopNav />
             <SideNav />
-            <main>{children}</main>
+            <main className="mt-[87px] lg:mt-[111px]">{children}</main>
             <Player />
           </div>
         </Providers>

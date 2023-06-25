@@ -28,7 +28,7 @@ const SearchBar = () => {
         }`}
         onClick={handleSearchBar}
       >
-        <FiSearch className=" text-[#ffffff3f]" />
+        <FiSearch className=" text-[#ffffff3f] hover:text-iconsHover" />
       </label>
       <input
         type="text"

@@ -12,22 +12,24 @@ import { usePathname } from 'next/navigation';
 const SideNav = () => {
   const pathname = usePathname();
   return (
-    <div className="hidden lg:block absolute left-5 top-28">
+    <div className="hidden lg:block fixed left-5 top-28 ">
       <div className="bg-darkAlt px-4 py-7 rounded-[32px] flex flex-col gap-8">
         <Link
           href={'/'}
-          className={`opacity-25 hover:text-iconsHover hover:opacity-100 cursor-pointer ${
-            pathname === '/' ? 'text-iconsHover opacity-100' : 'text-icons'
+          className={` hover:text-iconsHover hover:opacity-100 cursor-pointer ${
+            pathname === '/'
+              ? 'text-iconsHover opacity-100'
+              : 'text-icons opacity-25'
           }`}
         >
           <HomeIcon />
         </Link>
         <Link
           href={'/collections'}
-          className={`opacity-25 hover:text-iconsHover hover:opacity-100 cursor-pointer ${
+          className={` hover:text-iconsHover hover:opacity-100 cursor-pointer ${
             pathname.includes('collections')
               ? 'text-iconsHover opacity-100'
-              : 'text-icons'
+              : 'text-icons opacity-25'
           }`}
         >
           <PlaylistIcon />
