@@ -4,8 +4,7 @@ import { useGetPlaylistTracksQuery } from '@/redux/slices/apiSlice';
 import { FiHeart, FiMoreVertical, FiPlay } from 'react-icons/fi';
 import { useDispatch, useSelector } from 'react-redux';
 import { setTrack } from '@/redux/slices/trackSlice';
-import MusicPlusIcon from '@/public/assets/music-square-add.svg';
-import PlayIcon from '@/public/assets/playall.svg';
+import { PlayAll, MusicAdd } from '@/components/svgs';
 import {
   removeFromLikes,
   removeFromMyCollection,
@@ -81,14 +80,14 @@ const Playlist = ({ params }) => {
               className="flex gap-3 p-3 rounded-[32px] items-center bg-[#ffffff12] cursor-pointer duration-200 ease-in-out hover:text-iconsHover"
               onClick={selectAllTracks}
             >
-              <PlayIcon />
+              <PlayAll />
               <span>Play all</span>
             </span>
             <span
               className="flex gap-3 p-3 rounded-[32px] items-center bg-[#ffffff12] cursor-pointer duration-200 ease-in-out hover:text-iconsHover"
               onClick={handleMyCollections}
             >
-              <MusicPlusIcon />
+              <MusicAdd />
               <span>
                 {myCollections.some((pl) => pl.playlist.id === data.playlist.id)
                   ? 'Remove from'

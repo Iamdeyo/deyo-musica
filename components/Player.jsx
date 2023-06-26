@@ -4,8 +4,7 @@ import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 import { FiPause, FiPlay } from 'react-icons/fi';
 import { BiShuffle } from 'react-icons/bi';
-import PrevIcon from '@/public/assets/previous.svg';
-import NextIcon from '@/public/assets/next.svg';
+import { NextIcon, Previous } from './svgs';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { useState } from 'react';
@@ -72,7 +71,7 @@ const Player = () => {
   const customIcons = {
     play: <FiPlay fill="#fff" className="sm:text-[12px]" />,
     pause: <FiPause fill="#fff" className="sm:text-[12px]" />,
-    previous: <PrevIcon />,
+    previous: <Previous />,
     next: <NextIcon />,
   };
 

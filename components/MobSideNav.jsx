@@ -1,10 +1,5 @@
 'use client';
-import HomeIcon from '@/public/assets/home.svg';
-import PlaylistIcon from '@/public/assets/playlist.svg';
-import RadioIcon from '@/public/assets/radio.svg';
-import ProfileIcon from '@/public/assets/profile.svg';
-import VideosIcon from '@/public/assets/videos.svg';
-import LogoutIcon from '@/public/assets/Logout.svg';
+import { Videos, Logout, Home, Playlist, Profile, Radio } from './svgs';
 import { FiX } from 'react-icons/fi';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -32,7 +27,7 @@ const MobSideNav = ({ toggleMenu }) => {
           }`}
           onClick={toggleMenu}
         >
-          <HomeIcon className="group-hover:text-iconsHover" />
+          <Home className="group-hover:text-iconsHover" />
           <p className="font-bold group-hover:text-white">Home</p>
         </Link>
         <Link
@@ -44,23 +39,23 @@ const MobSideNav = ({ toggleMenu }) => {
           }`}
           onClick={toggleMenu}
         >
-          <PlaylistIcon className="group-hover:text-iconsHover" />
+          <Playlist className="group-hover:text-iconsHover" />
           <p className="font-bold group-hover:text-white">My collections</p>
         </Link>
         <div className="flex h-10 group items-center gap-4 text-icons opacity-25 hover:opacity-100 cursor-pointer">
-          <RadioIcon className="group-hover:text-iconsHover" />
+          <Radio className="group-hover:text-iconsHover" />
           <p className="font-bold group-hover:text-white">Radio</p>
         </div>
         <div className="flex h-10 group items-center gap-4 text-icons opacity-25 hover:opacity-100 cursor-pointer">
-          <VideosIcon className="group-hover:text-iconsHover" />
+          <Videos className="group-hover:text-iconsHover" />
           <p className="font-bold group-hover:text-white">Music Videos</p>
         </div>
         <div className="flex h-10 group items-center gap-4 text-icons opacity-25 hover:opacity-100 cursor-pointer">
-          <ProfileIcon className="group-hover:text-iconsHover" />
+          <Profile className="group-hover:text-iconsHover" />
           <p className="font-bold group-hover:text-white">Profile</p>
         </div>
         <div className="flex h-10 group items-center gap-4 text-icons opacity-25 hover:opacity-100 cursor-pointer">
-          <LogoutIcon className="group-hover:text-iconsHover" />
+          <Logout className="group-hover:text-iconsHover" />
           <p className="font-bold group-hover:text-white">Logout</p>
         </div>
       </div>

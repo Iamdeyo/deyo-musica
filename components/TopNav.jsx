@@ -1,8 +1,7 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
-import MainLogo from '@/public/assets/logo.svg';
+import { MainLogo } from './svgs';
 import { FiMenu } from 'react-icons/fi';
 import SearchBar from './SearchBar';
 import MobSideNav from './MobSideNav';

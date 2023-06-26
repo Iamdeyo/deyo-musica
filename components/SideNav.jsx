@@ -1,11 +1,6 @@
 'use client';
 
-import HomeIcon from '@/public/assets/home.svg';
-import PlaylistIcon from '@/public/assets/playlist.svg';
-import RadioIcon from '@/public/assets/radio.svg';
-import ProfileIcon from '@/public/assets/profile.svg';
-import VideosIcon from '@/public/assets/videos.svg';
-import LogoutIcon from '@/public/assets/Logout.svg';
+import { Videos, Logout, Home, Playlist, Profile, Radio } from './svgs';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -22,7 +17,7 @@ const SideNav = () => {
               : 'text-icons opacity-25'
           }`}
         >
-          <HomeIcon />
+          <Home />
         </Link>
         <Link
           href={'/collections'}
@@ -32,21 +27,21 @@ const SideNav = () => {
               : 'text-icons opacity-25'
           }`}
         >
-          <PlaylistIcon />
+          <Playlist />
         </Link>
         <div className=" text-icons opacity-25 hover:text-iconsHover hover:opacity-100 cursor-pointer">
-          <RadioIcon />
+          <Radio />
         </div>
         <div className=" text-icons opacity-25 hover:text-iconsHover hover:opacity-100 cursor-pointer">
-          <VideosIcon />
+          <Videos />
         </div>
       </div>
       <div className="bg-darkAlt px-4 py-7 rounded-[32px] flex flex-col gap-8 mt-5">
         <div className=" text-icons opacity-25 hover:text-iconsHover hover:opacity-100 cursor-pointer">
-          <ProfileIcon />
+          <Profile />
         </div>
         <div className=" text-icons opacity-25 hover:text-iconsHover hover:opacity-100 cursor-pointer">
-          <LogoutIcon />
+          <Logout />
         </div>
       </div>
     </div>

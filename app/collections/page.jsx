@@ -4,8 +4,6 @@ import MyCollections from '@/components/collections/MyCollections';
 import { useState } from 'react';
 
 function Collections() {
-  const [data, setData] = useState(null);
-  const [isLoading, setisLoading] = useState(true);
   const [mode, setMode] = useState('collections');
 
   const modeHandler = () => {
