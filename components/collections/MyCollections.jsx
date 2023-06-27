@@ -1,3 +1,4 @@
+import { setPlaylist } from '@/redux/slices/collectionSlice';
 import { setTrack } from '@/redux/slices/trackSlice';
 import { FiPlay } from 'react-icons/fi';
 import { useDispatch, useSelector } from 'react-redux';
@@ -6,8 +7,9 @@ const MyCollections = () => {
   const dispacth = useDispatch();
   const data = useSelector((state) => state.collection.myCollections);
 
-  const selectAllTracks = (tracks) => {
+  const selectAllTracks = ({ tracks, playlist }) => {
     dispacth(setTrack(tracks));
+    dispacth(setPlaylist(playlist));
   };
   return (
     <div className="flex gap-5 sm:gap-6 flex-wrap h-full">
@@ -23,12 +25,12 @@ const MyCollections = () => {
               <p className=" truncate w-2/3 text-[10px] opacity-75">
                 {item.playlist.user.name}
               </p>
-              <p className="mt-8 sm:hidden">2.3m likes</p>
+              <p className="mt-8 sm:hidden">{item.playlist.likes} likes</p>
             </div>
 
             <span
               className="p-3 inline-block rounded-full bg-[#face6666] absolute right-5 bottom-6 hover:animate-pulse"
-              onClick={() => selectAllTracks(item.tracks)}
+              onClick={() => selectAllTracks(item)}
             >
               <FiPlay className="fill-iconsHover text-iconsHover" />
             </span>

@@ -22,6 +22,7 @@ const Player = () => {
   useEffect(() => {
     setTracks(getTracks);
     setCurrentTrackIndex(0);
+    setTrack(null);
   }, [getTracks]);
 
   useEffect(() => {
@@ -78,7 +79,7 @@ const Player = () => {
   return (
     <div className="fixed left-0 bottom-0 z-20 player">
       <div className="h-full flex px-4 py-6 relative">
-        <div className="flex items-center h-full sm:w-[20%] gap-3 ">
+        <div className="flex items-center h-full w-[calc(100%-120px)] sm:w-[20%] gap-3 ">
           {track && (
             <img
               src={track?.album.cover_medium}

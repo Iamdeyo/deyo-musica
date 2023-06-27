@@ -23,7 +23,7 @@ const Likes = () => {
               <p className=" truncate w-2/3 text-[10px] opacity-75">
                 {item.artist.name}
               </p>
-              <p className="mt-8 sm:hidden">2.3m likes</p>
+              <p className="mt-8 opacity-0 sm:hidden ">2.3m likes</p>
             </div>
 
             <span

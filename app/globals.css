@@ -261,11 +261,14 @@ body {
   .rhap_container .rhap_main-controls button:first-child {
     display: none;
   }
-  .rhap_container .rhap_main-controls button:last-child,
   .rhap_container .rhap_main-controls button:nth-child(2) {
     width: 40px;
     height: 40px;
     font-size: 16px;
+  }
+  .rhap_container .rhap_main-controls button:nth-child(3) {
+    width: 40px;
+    height: 40px;
   }
   .rhap_container .rhap_main-controls {
     gap: 20px;
@@ -276,7 +279,7 @@ body {
     transform: translateY(-50%);
   }
 }
-@media screen and (max-width: 410px) {
+@media screen and (max-width: 480px) {
   .playlist-btn {
     flex-direction: column;
   }
